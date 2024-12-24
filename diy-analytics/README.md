@@ -43,14 +43,20 @@ Create a virtual environment (optional but recommended) and install the required
 ```bash
 pip install -r requirements.txt
 ```
+### 3. **Add your GROQ API Key to the Environment**
+Create a folder `.streamlit`. Create a file inside it `secrets.toml`. Inside the file, put your GROQ API KEY as follows:
+```secrets.toml
+GROQ_API_KEY='gsk_groq_api_key'
+```
 
-### 3. **Run the Application**  
+
+### 4. **Run the Application**  
 Launch the Streamlit app:  
 ```bash
 streamlit run app.py
 ```
 
-### 4. **Explore the Code**  
+### 5. **Explore the Code**  
 Understand the project structure and how different modules like `execute.py`, `llm.py`, and `summary.py` work.
 
 ---
