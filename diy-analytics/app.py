@@ -3,6 +3,7 @@ import pandas as pd
 from summary import summarize_data
 from llm import ask_llm
 from execute import execute_generated_code
+import re
 
 # Streamlit UI
 st.title("DIY Analytics")
@@ -35,10 +36,9 @@ if uploaded_file:
     
     with st.spinner("Insights cooking..."):
         if user_query:
-            code = ask_llm(user_query, summary_data)
-            if st.checkbox("Show code"):
-                st.code(code, language="python")
-            
+            response = ask_llm(user_query, summary_data)
+            code_match = re.search(r"```(?:\w*\n)?(.*?)```", response, re.DOTALL)
+            code = code_match.group(1).strip() if code_match else response.strip()
             try:
                 results, output = execute_generated_code(code, data)
 
@@ -54,3 +54,6 @@ if uploaded_file:
                 
             except Exception as e:
                 st.error(f"Error executing code: {e}")
+
+            if st.checkbox("Show code"):
+                st.code(code, language="python")
