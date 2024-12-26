@@ -4,7 +4,7 @@ DIY analytics is a Streamlit-based app that allows users to interact with their 
 
 ## Try it Out
 To try out the current version of DIY analytics: 
-- Go to this link: [DIY Analytics App](https://diy-analytics.streamlit.app/)
+- Go to this link: [DIY Analytics App](https://diy-analytics-gdg-bu.streamlit.app/)
 - Upload your dataset and the magic begins :)
 
 ## Open Source Challenge
