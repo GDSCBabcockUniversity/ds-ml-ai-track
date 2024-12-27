@@ -51,9 +51,9 @@ if uploaded_file:
 
     st.header("Chat with your data!")
     user_query = st.text_input("Ask a question about your dataset:")
-    embeddings = generate_embeddings(summary_data)
+    # embeddings = generate_embeddings(summary_data)
 
-    summary_data = handle_query(user_query, summary_data, embeddings)
+    # summary_data = handle_query(user_query, summary_data, embeddings)
     
     
     with st.spinner("Insights cooking..."):
