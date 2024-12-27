@@ -8,7 +8,7 @@ import re
 # Streamlit UI
 st.title("DIY Analytics")
 
-uploaded_file = st.file_uploader("Upload your CSV, EXCEL, or JSON dataset to get started!", type=["csv", "xlsx", "xls", "json"])
+uploaded_file = st.file_uploader("Upload your CSV, EXCEL, or JSON dataset to get started!", type=["csv", "xlsx", "json"])
 
 
 if uploaded_file:
@@ -22,7 +22,7 @@ if uploaded_file:
     elif file_extension == "json":
         data = pd.read_json(uploaded_file)
 
-    elif file_extension == "xlsx" or file_extension == "xls":
+    elif file_extension == "xlsx":
         data = pd.read_excel(uploaded_file)  
     
     else: 
@@ -31,6 +31,7 @@ if uploaded_file:
 
     summary_data = summarize_data(data)
     embeddings = generate_embeddings(summary_data)
+    
     st.write("#### Data Preview")
     st.dataframe(data.head())
 
