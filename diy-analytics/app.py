@@ -11,9 +11,10 @@ uploaded_file = st.file_uploader("Upload your CSV,XLSX or JSON dataset to get st
 
 
 if uploaded_file:
-
+## spliting the filename into parts using the period
     file_extension = uploaded_file.name.split('.')[-1].lower()
 
+    ## Checking for various file formats and adjusing reading methods based on them
     if file_extension == "csv":
         data = pd.read_csv(uploaded_file)
         summary_data = summarize_data(data)
@@ -33,6 +34,7 @@ if uploaded_file:
         st.dataframe(data.head())
     
     else: 
+        ## Displaying error in the case of an unsupported file format
         st.error(f"Unsupported file format: {file_extension}. Please upload a CSV, Excel, JSON file")
 
 
