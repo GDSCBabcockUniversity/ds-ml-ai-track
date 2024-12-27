@@ -4,4 +4,4 @@ pandas
 matplotlib
 openpyxl
 sentence-transformers
-sklearn
+scikit-learn
