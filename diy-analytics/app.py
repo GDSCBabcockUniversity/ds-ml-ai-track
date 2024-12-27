@@ -4,6 +4,7 @@ from summary import summarize_data
 from llm import ask_llm
 from execute import execute_generated_code
 import re
+from install import install
 
 # Streamlit UI
 st.title("DIY Analytics")
