@@ -4,7 +4,6 @@ from summary import summarize_data
 from llm import ask_llm
 from execute import execute_generated_code
 import re
-from install import install
 
 # Streamlit UI
 st.title("DIY Analytics")
@@ -25,17 +24,6 @@ if uploaded_file:
 
     elif file_extension == "json":
         data = pd.read_json(uploaded_file)
-        summary_data = summarize_data(data)
-        st.write("#### Data Preview")
-        st.dataframe(data.head())
-
-    elif file_extension == "xlsx":
-        # Ensure openpyxl is installed
-        try:
-            import openpyxl
-        except ImportError:
-            install("openpyxl")
-        data = pd.read_excel(uploaded_file)
         summary_data = summarize_data(data)
         st.write("#### Data Preview")
         st.dataframe(data.head())
