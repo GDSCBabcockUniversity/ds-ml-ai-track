@@ -29,6 +29,11 @@ if uploaded_file:
         st.dataframe(data.head())
 
     elif file_extension == "xlsx":
+        # Ensure openpyxl is installed
+        try:
+            import openpyxl
+        except ImportError:
+            install("openpyxl")
         data = pd.read_excel(uploaded_file)
         summary_data = summarize_data(data)
         st.write("#### Data Preview")
