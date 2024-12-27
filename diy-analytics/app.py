@@ -30,7 +30,6 @@ if uploaded_file:
         st.error(f"Unsupported file format: {file_extension}. Please upload a CSV or JSON file")
 
     summary_data = summarize_data(data)
-    embeddings = generate_embeddings(summary_data)
     
     st.write("#### Data Preview")
     st.dataframe(data.head())
@@ -52,8 +51,10 @@ if uploaded_file:
 
     st.header("Chat with your data!")
     user_query = st.text_input("Ask a question about your dataset:")
+    embeddings = generate_embeddings(summary_data)
 
     summary_data = handle_query(user_query, summary_data, embeddings)
+    
     
     with st.spinner("Insights cooking..."):
         if user_query:
