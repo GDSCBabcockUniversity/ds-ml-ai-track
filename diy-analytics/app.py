@@ -8,7 +8,7 @@ import re
 # Streamlit UI
 st.title("DIY Analytics")
 
-uploaded_file = st.file_uploader("Upload your CSV XLSX or JSON dataset to get started!", type=["csv","json","xlsx"])
+uploaded_file = st.file_uploader("Upload your CSV or JSON dataset to get started!", type=["csv","json"])
 
 
 if uploaded_file:
@@ -30,7 +30,7 @@ if uploaded_file:
     
     else: 
         ## Displaying error in the case of an unsupported file format
-        st.error(f"Unsupported file format: {file_extension}. Please upload a CSV, Excel, JSON file")
+        st.error(f"Unsupported file format: {file_extension}. Please upload a CSV or JSON file")
 
 
     if st.checkbox("Show Data Summary"):
