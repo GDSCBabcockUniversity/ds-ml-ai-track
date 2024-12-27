@@ -7,7 +7,7 @@ from execute import execute_generated_code
 # Streamlit UI
 st.title("DIY Analytics")
 
-uploaded_file = st.file_uploader("Upload your CSV,XLSX or JSON dataset to get started!", type=["csv","json","xlsx"])
+uploaded_file = st.file_uploader("Upload your CSV XLSX or JSON dataset to get started!", type=["csv","json","xlsx"])
 
 
 if uploaded_file:
