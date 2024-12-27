@@ -7,14 +7,34 @@ from execute import execute_generated_code
 # Streamlit UI
 st.title("DIY Analytics")
 
-uploaded_file = st.file_uploader("Upload your CSV dataset to get started!", type=["csv"])
+uploaded_file = st.file_uploader("Upload your CSV,XLSX or JSON dataset to get started!", type=["csv","json","xlsx"])
 
 
 if uploaded_file:
-    data = pd.read_csv(uploaded_file)
-    summary_data = summarize_data(data)
-    st.write("#### Data Preview:")
-    st.dataframe(data.head())
+
+    file_extension = uploaded_file.name.split('.')[-1].lower()
+
+    if file_extension == "csv":
+        data = pd.read_csv(uploaded_file)
+        summary_data = summarize_data(data)
+        st.write("#### Data Preview")
+        st.dataframe(data.head())
+
+    elif file_extension == "json":
+        data = pd.read_json(uploaded_file)
+        summary_data = summarize_data(data)
+        st.write("#### Data Preview")
+        st.dataframe(data.head())
+
+    elif file_extension == "xlsx":
+        data = pd.read_excel(uploaded_file)
+        summary_data = summarize_data(data)
+        st.write("#### Data Preview")
+        st.dataframe(data.head())
+    
+    else: 
+        st.error(f"Unsupported file format: {file_extension}. Please upload a CSV, Excel, JSON file")
+
 
     if st.checkbox("Show Data Summary"):
         missing_values, duplicated_values, summary_statistics = st.tabs(["Missing Values", "Duplicated Values", "Summary Statistics"])
