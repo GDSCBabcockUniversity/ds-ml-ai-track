@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-from summary import summarize_data
+from rag import summarize_data, generate_embeddings, handle_query
 from llm import ask_llm
 from execute import execute_generated_code
 import re
@@ -30,6 +30,7 @@ if uploaded_file:
         st.error(f"Unsupported file format: {file_extension}. Please upload a CSV or JSON file")
 
     summary_data = summarize_data(data)
+    embeddings = generate_embeddings(summary_data)
     st.write("#### Data Preview")
     st.dataframe(data.head())
 
@@ -50,6 +51,8 @@ if uploaded_file:
 
     st.header("Chat with your data!")
     user_query = st.text_input("Ask a question about your dataset:")
+
+    summary_data = handle_query(user_query, summary_data, embeddings)
     
     with st.spinner("Insights cooking..."):
         if user_query:
