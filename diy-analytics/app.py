@@ -8,7 +8,7 @@ import re
 # Streamlit UI
 st.title("DIY Analytics")
 
-uploaded_file = st.file_uploader("Upload your CSV or JSON dataset to get started!", type=["csv","json"])
+uploaded_file = st.file_uploader("Upload your CSV, EXCEL, or JSON dataset to get started!", type=["csv", "xlsx", "xls", "json"])
 
 
 if uploaded_file:
