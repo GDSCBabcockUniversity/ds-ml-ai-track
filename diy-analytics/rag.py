@@ -10,7 +10,7 @@ def summarize_data(df):
     for column in df.columns:
         column_metadata[column] = {
             "data_type": str(df[column].dtype),
-            "unique_values": df[column].dropna().unique().tolist()
+            "unique_values": df[column].dropna().unique().tolist()[:10]
         }
 
     summary = {
