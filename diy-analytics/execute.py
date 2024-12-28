@@ -2,7 +2,7 @@ import io
 import sys
 
 def execute_generated_code(code, df):
-    clean_code = code.strip('```').strip()  # Clean the code by removing block markers and spaces
+    clean_code = code.strip('```').strip()  
     
     # Redirect stdout to capture print statements
     output_buffer = io.StringIO()
