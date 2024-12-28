@@ -23,7 +23,7 @@ if uploaded_file:
         data = pd.read_excel(uploaded_file)  
     
     else: 
-        st.error(f"Unsupported file format: {file_extension}. Please upload a CSV or JSON file")
+        st.error(f"Unsupported file format: {file_extension}. Please upload a CSV, XLSX, or JSON file")
     
     st.write("#### Data Preview")
     st.dataframe(data.head())
