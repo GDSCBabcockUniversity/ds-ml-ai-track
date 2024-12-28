@@ -27,7 +27,7 @@ if uploaded_file:
     
     else: 
         ## Displaying error in the case of an unsupported file format
-        st.error(f"Unsupported file format: {file_extension}. Please upload a CSV, XLSX or JSON file")
+        st.error(f"Unsupported file format: {file_extension}. Please upload a CSV or JSON file")
 
     summary_data = summarize_data(data)
     
